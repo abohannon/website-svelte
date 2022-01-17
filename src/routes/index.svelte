@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+	<title>Adam Bohannon</title>
+</svelte:head>
+
+<h1 class="text-3xl font-bold underline">Adam Bohannon</h1>
+<ul>
+	<li>Github</li>
+	<li>LinkedIn</li>
+	<li>Twitter</li>
+</ul>
