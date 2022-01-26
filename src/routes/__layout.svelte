@@ -1,9 +1,13 @@
 <script>
 	import Nav from '$lib/Nav.svelte';
+	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 </script>
 
-<Nav />
-<main class="container mx-auto">
-	<slot />
-</main>
+<div class="container mx-auto">
+	<Nav />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</div>

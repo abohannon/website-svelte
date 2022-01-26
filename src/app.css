@@ -1,4 +1,18 @@
+@import url(./styles/prism-material-dark.css);
 /* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	@apply text-slate-700;
+	@apply font-light;
+}
+
+p {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+}

@@ -1,5 +1,5 @@
 ---
-title: "Shopify Development: Using Liquid syntax in Sass and compiling with Gulp"
+title: 'Shopify Development: Using Liquid syntax in Sass and compiling with Gulp'
 date: 2020-07-15
 tags:
   - Sass
@@ -8,28 +8,34 @@ tags:
   - Gulp
 ---
 
-Recently a friend was having trouble developing a custom Shopify theme, specifically getting Sass to compile when the Sass file contains Liquid variables. After helping him get unstuck (and after reading numerous articles and Stack Overflow posts) I thought I'd distill what we learned, especially because we didn't find anything that clearly described how to use Liquid statements in Sass.
+Recently a friend was having trouble getting Sass to compile when the Sass file contains Liquid variables. I thought I'd distill what we learned, especially because we didn't find anything that clearly described how to use Liquid statements in Sass.
 
 Using [Sass interpolation](https://sass-lang.com/documentation/interpolation) you can easily add Liquid variables.
 
-```scss:title=sass/main.scss
+_sass/main.scss_
+
+```scss
 h1 {
-  color: #{'"{{ header_color }}"'};
+	color: #{'"{{ header_color }}"'};
 }
 ```
 
-To add Liquid expressions, add them inside comments. (Note: This relies on a particular Gulp setting, described below in Gulp Setup)
+To add Liquid expressions, add them inside comments. (Note: This relies on a particular Gulp setting, described below in **Gulp Setup**)
 
-```scss:title=sass/main.scss
+_sass/main.scss_
+
+```scss
 /* {% assign header_color = '#7ab55c' %} */
 h1 {
-  color: #{'"{{ header_color }}"'};
+	color: #{'"{{ header_color }}"'};
 }
 ```
 
 Using Gulp, this will compile to the following (Liquid ignores CSS/Sass comment syntax).
 
-```liquid:title=assets/theme.scss.Liquid
+_assets/theme.scss.Liquid_
+
+```scss
 /* {% assign header_color = '#7ab55c' %} */
 h1 {
   color: {{ header_color }};
@@ -38,11 +44,13 @@ h1 {
 
 Here's another example using Sass variables.
 
-```scss:title=sass/main.scss
+_sass/main.scss_
+
+```scss
 $primary-color-brighter: calc(#{'"{{ "#7ab55c" | color_brightness }}"'} / 100);
 
 p {
-  color: $primary-color-brighter;
+	color: $primary-color-brighter;
 }
 ```
 
@@ -65,33 +73,35 @@ npm install gulp gulp-autoprefixer gulp-rename gulp-replace gulp-sass
 
 Next create a file called `gulpfile.js` in the root of your project. In this file is where you will setup the plumbing to process your Sass file.
 
-```js:title=gulpfile.js {12}
-var gulp = require("gulp");
-var sass = require("gulp-sass");
-var replace = require("gulp-replace");
-var autoprefixer = require("gulp-autoprefixer");
-var rename = require("gulp-rename");
+_gulpfile.js_
 
-gulp.task("sass", function () {
-  return (
-    gulp
-      // the directory where your Sass files lives
-      .src("./sass/main.scss")
-      .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
-      // to add vendoer prefixes
-      .pipe(autoprefixer())
-      // rename our output to a .liquid file
-      .pipe(rename("theme.scss.liquid"))
-      // to get rid of the double quotes inside the single quotes
-      .pipe(replace('"{{', "{{"))
-      .pipe(replace('}}"', "}}"))
-      // determines our output directory
-      .pipe(gulp.dest("./assets/"))
-  );
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var replace = require('gulp-replace');
+var autoprefixer = require('gulp-autoprefixer');
+var rename = require('gulp-rename');
+
+gulp.task('sass', function () {
+	return (
+		gulp
+			// the directory where your Sass files lives
+			.src('./sass/main.scss')
+			.pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+			// to add vendoer prefixes
+			.pipe(autoprefixer())
+			// rename our output to a .liquid file
+			.pipe(rename('theme.scss.liquid'))
+			// to get rid of the double quotes inside the single quotes
+			.pipe(replace('"{{', '{{'))
+			.pipe(replace('}}"', '}}'))
+			// determines our output directory
+			.pipe(gulp.dest('./assets/'))
+	);
 });
 
-gulp.task("default", function () {
-  gulp.watch(["./sass/**/*.scss"], gulp.series(["sass"]));
+gulp.task('default', function () {
+	gulp.watch(['./sass/**/*.scss'], gulp.series(['sass']));
 });
 ```
 

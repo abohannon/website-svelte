@@ -6,7 +6,7 @@
 		},
 		{
 			title: 'Articles',
-			path: '/'
+			path: '/articles'
 		},
 		{
 			title: 'Github',
@@ -23,7 +23,7 @@
 	];
 </script>
 
-<nav class="container mx-auto py-6">
+<nav class="py-6">
 	<div class="flex flex-col">
 		<h1 class="text-3xl font-bold mb-4">Adam Bohannon</h1>
 		<div class="flex">
