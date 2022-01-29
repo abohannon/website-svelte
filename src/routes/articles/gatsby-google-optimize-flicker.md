@@ -120,7 +120,7 @@ If you run into issues or I missed something, let me know on [Twitter](https://t
 
 You may have already handled this, but don't forget to update your "Activation event" in Optimize and push `{ event: 'optimize.activate' }` into your dataLayer on route change to ensure your experiments persist as your visitors navigate your site. Otherwise the experiments will only appear when the experiment page(s) are deep linked/visited directly. If a visitor navigates away and comes back, the experiment variation will disappear.
 
-![Activate event in Google Optimize](./images/optimize.png)
+[![Activate event in Google Optimize](/images/optimize.png)](/images/optimize.png)
 
 ```js
 // Activates Google Optimize experiments

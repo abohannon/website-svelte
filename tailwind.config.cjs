@@ -10,6 +10,9 @@ const config = {
 				'2xl': '18rem'
 			}
 		},
+		borderWidth: {
+			DEFAULT: '1px'
+		},
 		extend: {}
 	},
 

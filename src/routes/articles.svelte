@@ -21,18 +21,17 @@
 	<title>Adam Bohannon | Articles</title>
 </svelte:head>
 
-<h1 class="text-3xl mb-6">Articles</h1>
-<ul>
+<ul class="divide-y divide-slate-200">
 	{#each articles as article}
-		<li class="mb-2">
-			<h2>
+		<li class="mb-2 pb-2">
+			<p class="italic">
+				{new Date(article.meta.date).toDateString()}
+			</p>
+			<h4>
 				<a href={article.path}>
 					{article.meta.title}
 				</a>
-			</h2>
-			<p class="italic">
-				Published {new Date(article.meta.date).toDateString()}
-			</p>
+			</h4>
 		</li>
 	{/each}
 </ul>
