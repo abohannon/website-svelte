@@ -1,3 +1,8 @@
+<script context="module">
+	import a from '$lib/ArticleLink.svelte';
+	export { a };
+</script>
+
 <script>
 	export let title;
 	export let date;
