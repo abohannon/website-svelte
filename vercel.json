@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/implement-set-of-stacks",
+      "destination": "/articles/implement-set-of-stacks",
+      "permanent": true
+    },
+    {
+      "source": "/compiling-sass-to-liquid",
+      "destination": "/articles/compiling-sass-to-liquid",
+      "permanent": true
+    },
+    {
+      "source": "/gatsby-google-optimize-flicker",
+      "destination": "/articles/gatsby-google-optimize-flicker",
+      "permanent": true
+    },
+    {
+      "source": "/release-tooling-github",
+      "destination": "/articles/release-tooling-github",
+      "permanent": true
+    }
+  ]
+}

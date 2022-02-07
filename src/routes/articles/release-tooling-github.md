@@ -1,5 +1,5 @@
 ---
-title: "Using GitHub actions for automatic PR labeling, release notes, and version bumping"
+title: 'Using GitHub actions for automatic PR labeling, release notes, and version bumping'
 date: 2020-09-04
 tags:
   - Tooling
@@ -51,13 +51,13 @@ We'll start with PR Labeler which automatically labels your PRs based on a confi
 5. In the `.github` root directory (not inside `workflows`) add another filed named `pr-labeler.yml` and paste the following as a boiler plate.
 
    ```yml
-   feature: ["feature/*", "feat/*"]
-   bugfix: ["fix/*", "bugfix/*"]
+   feature: ['feature/*', 'feat/*']
+   bugfix: ['fix/*', 'bugfix/*']
    style: style/*
    documentation: docs/*
-   performance: ["perf/*", "performance/*"]
+   performance: ['perf/*', 'performance/*']
    refactor: refactor/*
-   test: ["test/*", "testing/*"]
+   test: ['test/*', 'testing/*']
    build: build/*
    improvement: improvement/*
    chore: chore/*
@@ -75,19 +75,19 @@ We'll start with PR Labeler which automatically labels your PRs based on a confi
 
    For the sake of this tutorial, if you don't have a "feature" label, please create one.
 
-   ![Location of Labels](./pr-labeler-1.png)
-   ![Labels View](./pr-labeler-2.png)
+   ![[Location of Labels](/images/pr-labeler-1.png)](/images/pr-labeler-1.png)
+   [![Labels View](/images/pr-labeler-2.png)](/images/pr-labeler-2.png)
 
 7. Commit, push, and open a PR for your branch
 
    Now GitHub will see the files you added in the `.github` directory, install the action, and run it. If you click on "Actions" in your repo's top navigation, you can see the action working. This page will show a history of all your actions complete with logs if something goes wrong.
 
-   ![Actions View](./pr-labeler-3.png)
+   [![Actions View](/images/pr-labeler-3.png)](/images/pr-labeler-3.png)
 
    Once the action completes and (hopefully) is successful, head over to your PR view and you should see your PR with the label "feature" next to it. Congrats, you've successfully automated PR labeling!
 
    I added PR Labeler to my website repo while working on this blog. Here you can see my PR was automatically labeled "blog" because my branch name is `blog/release-tooling` and my yml config includes `blog: blog/*`.
-   ![PR View](./pr-labeler-4.png)
+   [![PR View](/images/pr-labeler-4.png)](/images/pr-labeler-4.png)
 
 ## Release Drafter Setup
 
@@ -116,52 +116,52 @@ The Release Drafter setup is very similar to the steps we just went through.
 3. In the `.github` root directory, create a file named `release-drafter.yml` and paste the following starter config. (Remember to checkout [the Release Drafter repo](https://github.com/release-drafter/release-drafter) for more configuration options.)
 
    ```yml
-   name-template: "v$RESOLVED_VERSION"
-   tag-template: "v$RESOLVED_VERSION"
+   name-template: 'v$RESOLVED_VERSION'
+   tag-template: 'v$RESOLVED_VERSION'
    categories:
-     - title: "⚠ Breaking Changes"
-       label: "breaking change"
-     - title: "🚀 Features"
-       label: "feature"
-     - title: "😎 Refactor"
-       label: "refactor"
-     - title: "🚅 Performance"
-       label: "performance"
-     - title: "🐛 Bug Fixes"
-       label: "bugfix"
-     - title: "🧰 Maintenance"
+     - title: '⚠ Breaking Changes'
+       label: 'breaking change'
+     - title: '🚀 Features'
+       label: 'feature'
+     - title: '😎 Refactor'
+       label: 'refactor'
+     - title: '🚅 Performance'
+       label: 'performance'
+     - title: '🐛 Bug Fixes'
+       label: 'bugfix'
+     - title: '🧰 Maintenance'
        labels:
-         - "chore"
-         - "build"
-     - title: "🧪 Tests"
+         - 'chore'
+         - 'build'
+     - title: '🧪 Tests'
        labels:
-         - "test"
-         - "testing"
-         - "tests"
-     - title: "🌈 Style"
-       label: "style"
-     - title: "📕 Documentation"
-       label: "documentation"
-   change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+         - 'test'
+         - 'testing'
+         - 'tests'
+     - title: '🌈 Style'
+       label: 'style'
+     - title: '📕 Documentation'
+       label: 'documentation'
+   change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
    change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
    version-resolver:
      major:
        labels:
-         - "major"
-         - "breaking change"
+         - 'major'
+         - 'breaking change'
      minor:
        labels:
-         - "minor"
-         - "feature"
+         - 'minor'
+         - 'feature'
      patch:
        labels:
-         - "patch"
-         - "bugfix"
-         - "test"
-         - "documentation"
-         - "style"
-         - "chore"
-         - "build"
+         - 'patch'
+         - 'bugfix'
+         - 'test'
+         - 'documentation'
+         - 'style'
+         - 'chore'
+         - 'build'
      default: patch
    template: |
      $CHANGES
@@ -169,7 +169,7 @@ The Release Drafter setup is very similar to the steps we just went through.
 
    This config determines what the release draft will look like. This is what we use at work and it creates a release that looks like this:
 
-   ![Release](./release.png)
+   [![Release](/images/release.png)](/images/release.png)
 
    You will likely want to modify this to your repo's needs. It should be straightforward on how to add/remove titles and labels.
 
@@ -178,8 +178,8 @@ The Release Drafter setup is very similar to the steps we just went through.
    Note the `name-template` and `tag-template` properties at the top.
 
    ```yml
-   name-template: "v$RESOLVED_VERSION"
-   tag-template: "v$RESOLVED_VERSION"
+   name-template: 'v$RESOLVED_VERSION'
+   tag-template: 'v$RESOLVED_VERSION'
    ```
 
    This should match your current release formatting (if you've released before). For example, this format matches releases with titles and tags in the format of `v1.0.0`. If you don't prepend with "v", remove it here. Or you might prepend with "Release", then replace "v" with "Release ".
@@ -194,13 +194,13 @@ The Release Drafter setup is very similar to the steps we just went through.
 
    From your repo's main view, click "Create new release" in the right sidebar
 
-   ![Create new release](./release-2.png)
+   [![Create new release](/images/release-2.png)](/images/release-2.png)
 
    Enter `v1.0.0` in both the tag version and title and click "Publish Release".
 
    Note: You're not required to use this format. Whatever format you use, make sure it's reflected in the `name-template` and `tag-template` properties in your Release Drafter template config.
 
-   ![New release](./release-3.png)
+   [![New release](/images/release-3.png)](/images/release-3.png)
 
 6. Merge your PR into `master`
 

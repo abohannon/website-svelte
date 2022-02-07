@@ -28,7 +28,7 @@
 				{new Date(article.meta.date).toDateString()}
 			</p>
 			<h4>
-				<a href={article.path}>
+				<a class="no-underline" href={article.path}>
 					{article.meta.title}
 				</a>
 			</h4>

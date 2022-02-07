@@ -6,7 +6,7 @@
 
 <div class="container mx-auto">
 	<Nav />
-	<main>
+	<main class="mt-8">
 		<slot />
 	</main>
 	<Footer />

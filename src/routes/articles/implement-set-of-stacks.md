@@ -1,5 +1,5 @@
 ---
-title: "How To: Implement a Set of Stacks in Javascript"
+title: 'How To: Implement a Set of Stacks in Javascript'
 date: 2018-01-06
 tags:
   - Javascript
@@ -71,7 +71,7 @@ Note: remember that .length returns the _actual_ length of an array, not the num
 
 Let’s say our maxSize = 3. Here’s a visualization of what’s happening:
 
-![Set of Stacks](./stacks_1.png)
+[![Set of Stacks](/images/stacks_1.png)](/images/stacks_1.png)
 
 ### Step 3: Our popAt() Method
 
@@ -130,7 +130,7 @@ After that, we’ll assign stack to whatever’s left over in `nextStack`, that 
 
 Finally, we’ll run the same check we did in `pop()` to see if after all the work we did the last stack is empty. If so, let’s get rid of it. Then we’ll ultimately return our popped value so the user can see what it was.
 
-![Set of Stacks](./stacks_2.png)
+[![Set of Stacks](/images/stacks_2.png)](/images/stacks_2.png)
 
 ### The Final Code
 
@@ -138,66 +138,58 @@ Here’s what our data structure will look like. I’ve added some logs at the e
 
 ```js
 class StackSet {
-  constructor(maxSize) {
-    if (arguments.length < 1) {
-      throw new Error("Woops, maxSize is required!");
-    }
+	constructor(maxSize) {
+		if (arguments.length < 1) {
+			throw new Error('Woops, maxSize is required!');
+		}
 
-    this.stacks = [[]];
-    this.maxSize = maxSize;
-  }
+		this.stacks = [[]];
+		this.maxSize = maxSize;
+	}
 
-  push(value) {
-    if (this.stacks[this.stacks.length - 1].length === this.maxSize) {
-      this.stacks.push([]);
-    }
+	push(value) {
+		if (this.stacks[this.stacks.length - 1].length === this.maxSize) {
+			this.stacks.push([]);
+		}
 
-    this.stacks[this.stacks.length - 1].push(value);
-  }
+		this.stacks[this.stacks.length - 1].push(value);
+	}
 
-  pop() {
-    const value = this.stacks[this.stacks.length - 1].pop();
+	pop() {
+		const value = this.stacks[this.stacks.length - 1].pop();
 
-    if (
-      this.stacks.length > 1 &&
-      this.stacks[this.stacks.length - 1].length === 0
-    ) {
-      this.stacks.pop();
-    }
+		if (this.stacks.length > 1 && this.stacks[this.stacks.length - 1].length === 0) {
+			this.stacks.pop();
+		}
 
-    return value;
-  }
+		return value;
+	}
 
-  popAt(number) {
-    if (number < 1 || number > this.stacks.length) {
-      throw new Error(
-        "Whoa, that number is either too small or too large for our stack."
-      );
-    }
+	popAt(number) {
+		if (number < 1 || number > this.stacks.length) {
+			throw new Error('Whoa, that number is either too small or too large for our stack.');
+		}
 
-    if (number === this.stacks.length) {
-      return this.pop();
-    }
+		if (number === this.stacks.length) {
+			return this.pop();
+		}
 
-    let stack = this.stacks[number - 1];
-    let value = stack.pop();
-    let nextStack = [];
+		let stack = this.stacks[number - 1];
+		let value = stack.pop();
+		let nextStack = [];
 
-    for (let i = number; i < this.stacks.length; i++) {
-      nextStack = this.stacks[i];
-      stack.push(nextStack.shift());
-      stack = nextStack;
-    }
+		for (let i = number; i < this.stacks.length; i++) {
+			nextStack = this.stacks[i];
+			stack.push(nextStack.shift());
+			stack = nextStack;
+		}
 
-    if (
-      this.stacks.length > 1 &&
-      this.stacks[this.stacks.length - 1].length === 0
-    ) {
-      this.stacks.pop();
-    }
+		if (this.stacks.length > 1 && this.stacks[this.stacks.length - 1].length === 0) {
+			this.stacks.pop();
+		}
 
-    return value;
-  }
+		return value;
+	}
 }
 // initialize new StackSet object
 const myStack = new StackSet(3);
@@ -213,8 +205,4 @@ console.log(myStack.pop()); // 6
 console.log(myStack.stacks); // [ [ 1, 2, 3 ], [ 4, 5 ] ]
 console.log(myStack.popAt(1)); // 3
 console.log(myStack.stacks); // [ [ 1, 2, 4 ], [ 5 ] ]
-```
-
-```
-
 ```

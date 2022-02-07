@@ -13,7 +13,7 @@
 	<h1>{title}</h1>
 	<p>{new Date(date).toDateString()}</p>
 	{#each tags as tag}
-		<span class="mr-2 text-sm font-semibold">{tag}</span>
+		<span class="mr-4 text-sm font-semibold">{tag}</span>
 	{/each}
 </div>
 <slot />

@@ -9,6 +9,10 @@ html {
 	@apply font-light;
 }
 
+a {
+	text-decoration: underline;
+}
+
 p {
 	display: block;
 	margin-top: 1em;
