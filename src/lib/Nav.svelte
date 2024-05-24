@@ -1,10 +1,6 @@
 <script>
 	let navItems = [
 		{
-			title: 'Articles',
-			path: '/articles'
-		},
-		{
 			title: 'Github',
 			path: 'https://github.com/abohannon'
 		},
@@ -12,10 +8,6 @@
 			title: 'LinkedIn',
 			path: 'https://www.linkedin.com/in/adambohannon/'
 		},
-		{
-			title: 'Twitter',
-			path: 'https://twitter.com/abohannon'
-		}
 	];
 </script>
 
